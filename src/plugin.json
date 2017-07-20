@@ -33,14 +33,13 @@
   },
 
   "includes": [
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Home.json"},
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/GeneralInformation.json"},
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Coverage.json"},
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Stability.json"},
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Performances.json"}
-    //,
-    //{"type": "panel", "name": "WebtestDashboard App Panel"},
-    //{"type": "datasource", "name": "WebtestDashboard App Datasource"}
+    {"type": "dashboard", "name": "Home", "path": "dashboards/Home.json"},
+    {"type": "dashboard", "name": "GeneralInformation", "path": "dashboards/GeneralInformation.json"},
+    {"type": "dashboard", "name": "Coverage", "path": "dashboards/Coverage.json"},
+    {"type": "dashboard", "name": "Stability", "path": "dashboards/Stability.json"},
+    {"type": "dashboard", "name": "Performances", "path": "dashboards/Performances.json"},
+    {"type": "panel", "name": "WebtestDashboard App Panel"},
+    {"type": "datasource", "name": "WebtestDashboard App Datasource"}
   ],
 
   "dependencies": {
