@@ -37,9 +37,10 @@
     {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/GeneralInformation.json"},
     {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Coverage.json"},
     {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Stability.json"},
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Performances.json"},
-    {"type": "panel", "name": "WebtestDashboard App Panel"},
-    {"type": "datasource", "name": "WebtestDashboard App Datasource"}
+    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/Performances.json"}
+    //,
+    //{"type": "panel", "name": "WebtestDashboard App Panel"},
+    //{"type": "datasource", "name": "WebtestDashboard App Datasource"}
   ],
 
   "dependencies": {
