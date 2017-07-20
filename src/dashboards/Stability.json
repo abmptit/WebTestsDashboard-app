@@ -1,0 +1,1406 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": 22,
+  "links": [
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Home",
+      "type": "link",
+      "url": "."
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "General Informations",
+      "tooltip": "",
+      "type": "link",
+      "url": "dashboard/db/general-informations"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Coverage",
+      "type": "link",
+      "url": "dashboard/db/coverage"
+    },
+    {
+      "icon": "doc",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Stability",
+      "type": "link",
+      "url": "dashboard/db/stability"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Performances",
+      "type": "link",
+      "url": "dashboard/db/performances"
+    }
+  ],
+  "refresh": false,
+  "rows": [
+    {
+      "collapse": false,
+      "height": 62,
+      "panels": [
+        {
+          "content": "<div class=\"text-center dashboard-header\">\n  <span>Stability</span>\n</div>\n",
+          "id": 13,
+          "links": [],
+          "mode": "html",
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 481,
+      "panels": [
+        {
+          "aliasColors": {
+            "Failed Tests": "#BF1B00"
+          },
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "ES_Report",
+          "fontSize": "80%",
+          "format": "short",
+          "id": 7,
+          "interval": null,
+          "legend": {
+            "percentage": false,
+            "show": true,
+            "values": true
+          },
+          "legendType": "On graph",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "donut",
+          "span": 4,
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "alias": "Passed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ProjectName",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {
+                    "avg": false,
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "sigma": null
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Recruiting\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "alias": "Failed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ProjectName",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": "((_value - 1)*(-1))",
+                  "meta": {
+                    "avg": false,
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "script": {
+                      "inline": "((_value - 1)*(-1))"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Recruiting\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "title": "Recruiting",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "Failed Tests": "#BF1B00"
+          },
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": null,
+          "fontSize": "80%",
+          "format": "short",
+          "id": 15,
+          "interval": null,
+          "legend": {
+            "percentage": false,
+            "show": true,
+            "values": true
+          },
+          "legendType": "On graph",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "donut",
+          "span": 4,
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "alias": "Passed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ProjectName",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {
+                    "avg": false,
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "sigma": 3
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Career\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "alias": "Failed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ProjectName",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": "((_value - 1) * (-1))",
+                  "meta": {
+                    "avg": false,
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "script": {
+                      "inline": "((_value - 1) * (-1))"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Career\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "title": "Career",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "Failed Tests": "#BF1B00"
+          },
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": null,
+          "fontSize": "80%",
+          "format": "short",
+          "id": 16,
+          "interval": null,
+          "legend": {
+            "percentage": false,
+            "show": true,
+            "values": true
+          },
+          "legendType": "On graph",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "donut",
+          "span": 4,
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "alias": "Passed Tests",
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {
+                    "avg": false,
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "sigma": 3
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "alias": "Failed Tests",
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": "((_value - 1) * (-1))",
+                  "meta": {
+                    "avg": false,
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "script": {
+                      "inline": "((_value - 1) * (-1))"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "Environment.BuildTag.keyword:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "title": "All Products",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Stability Tests",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 504,
+      "panels": [
+        {
+          "aliasColors": {
+            "Failed Tests": "#E24D42"
+          },
+          "bars": true,
+          "datasource": "ES_Report",
+          "decimals": 0,
+          "fill": 10,
+          "id": 12,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 10,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Passed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildDate",
+                  "id": "4",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {},
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Recruiting\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "alias": "Failed Tests",
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": "((_value - 1)*(-1))",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "missing": null,
+                    "script": {
+                      "inline": "((_value - 1)*(-1))"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Recruiting\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Recruiting",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": "Date",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Failed Tests": "#E24D42"
+          },
+          "bars": true,
+          "datasource": "ES_Report",
+          "decimals": 0,
+          "fill": 10,
+          "id": 11,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 10,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Passed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildDate",
+                  "id": "4",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {},
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Career\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "alias": "Failed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ProjectName",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": "((_value - 1)*(-1))",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "missing": null,
+                    "script": {
+                      "inline": "((_value - 1)*(-1))"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:\"Career\" AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Career",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": "Date",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Failed Tests": "#E24D42"
+          },
+          "bars": true,
+          "datasource": "ES_Report",
+          "decimals": 0,
+          "fill": 10,
+          "id": 14,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 10,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Passed Tests",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildDate",
+                  "id": "4",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {},
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "alias": "Failed Tests",
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "inlineScript": "((_value - 1)*(-1))",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "missing": null,
+                    "script": {
+                      "inline": "((_value - 1)*(-1))"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "Environment.BuildTag.keyword:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "All Projects",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": "Date",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 132,
+      "panels": [
+        {
+          "columns": [
+            {
+              "text": "ProjectName",
+              "value": "ProjectName"
+            },
+            {
+              "text": "TestClassName",
+              "value": "TestClassName"
+            },
+            {
+              "text": "Unique Count",
+              "value": "Unique Count"
+            }
+          ],
+          "compactRowsEnabled": false,
+          "datasource": "ES_Report",
+          "datatablePagingType": "simple_numbers",
+          "datatableTheme": "basic_theme",
+          "description": "Detect the unstable tests Set in the current scope",
+          "fontSize": "100%",
+          "height": "800",
+          "hoverEnabled": true,
+          "id": 18,
+          "infoEnabled": false,
+          "lengthChangeEnabled": false,
+          "links": [],
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 800,
+          "rowNumbersEnabled": false,
+          "rowsPerPage": 20,
+          "scroll": false,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "showCellBorders": false,
+          "showHeader": true,
+          "showRowBorders": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 12,
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "date"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 0,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ProjectName",
+                  "id": "5",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "TestClassName",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "1",
+                  "inlineScript": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "cardinality"
+                }
+              ],
+              "query": "Tests.IsPassed:false AND Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "themeOptions": {
+            "dark": "./css/datatable-dark.css",
+            "light": "./css/datatable-light.css"
+          },
+          "themes": [
+            {
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Build Test Set Failed occurrence",
+          "transform": "json",
+          "type": "ts-datatable-panel"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 488,
+      "panels": [
+        {
+          "columns": [
+            {
+              "text": "Error Message",
+              "value": "Tests.Scenarios.ExceptionMessage.keyword"
+            },
+            {
+              "text": "Nb of Tests containing the message",
+              "value": "Count"
+            },
+            {
+              "text": "Nb of Builds containing the message",
+              "value": "Unique Count"
+            }
+          ],
+          "compactRowsEnabled": false,
+          "datatablePagingType": "simple_numbers",
+          "datatableTheme": "basic_theme",
+          "fontSize": "100%",
+          "hoverEnabled": true,
+          "id": 17,
+          "infoEnabled": false,
+          "lengthChangeEnabled": false,
+          "links": [],
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 488,
+          "rowNumbersEnabled": false,
+          "rowsPerPage": 20,
+          "scroll": false,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "showCellBorders": false,
+          "showHeader": true,
+          "showRowBorders": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 12,
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Build Date",
+              "type": "date"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": null,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Tests.Scenarios.ExceptionMessage.keyword",
+                  "id": "7",
+                  "settings": {
+                    "missing": "NA",
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "cardinality"
+                },
+                {
+                  "field": "select field",
+                  "id": "9",
+                  "type": "count"
+                }
+              ],
+              "query": "Environment.BuildTag.keyword:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.GitUrl.keyword",
+                  "id": "5",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "Tests.ExceptionMessage.keyword",
+                  "id": "7",
+                  "settings": {
+                    "missing": null,
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "Environment.BuildDate",
+                  "id": "9",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "Tests.Name",
+                  "id": "8",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": true,
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "count"
+                }
+              ],
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            },
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Tests.ExceptionMessage.keyword",
+                  "id": "7",
+                  "settings": {
+                    "missing": null,
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": true,
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "count"
+                }
+              ],
+              "refId": "C",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "themeOptions": {
+            "dark": "./css/datatable-dark.css",
+            "light": "./css/datatable-light.css"
+          },
+          "themes": [
+            {
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Exception Message Occurences",
+          "transform": "json",
+          "transparent": false,
+          "type": "briangann-datatable-panel"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "ES_Report",
+        "hide": 0,
+        "includeAll": true,
+        "label": "BuildTag",
+        "multi": true,
+        "name": "BuildTag",
+        "options": [],
+        "query": "\t{\"find\": \"terms\", \"field\": \"Environment.BuildTag.keyword\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 2,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "datasource": "ES_Report",
+        "filters": [],
+        "hide": 0,
+        "label": "Filter  Data",
+        "name": "CustomFilter",
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Stability",
+  "version": 49
+}
