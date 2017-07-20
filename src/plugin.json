@@ -44,13 +44,6 @@
 
   "dependencies": {
     "grafanaVersion": "4.x.x",
-    "plugins": [ 
-      "jdbranham-diagram-panel",
-      "grafana-piechart-panel",
-      "savantly-heatmap-panel",
-      "natel-plotly-panel",
-      "bessler-pictureit-pane", 
-      "briangann-datatable-panel"
-     ]
+    "plugins": []
   }
 }
