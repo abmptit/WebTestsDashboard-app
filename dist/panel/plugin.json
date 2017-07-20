@@ -1,5 +1,5 @@
 {
   "type": "panel",
-  "name": "Example App Panel",
-  "id": "grafana-example-app-panel"
+  "name": "WebtestDashboard App Panel",
+  "id": "grafana-webtestDashboard-app-panel"
 }

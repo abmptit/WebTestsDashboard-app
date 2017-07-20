@@ -1,7 +1,7 @@
 {
   "type": "app",
-  "name": "Example",
-  "id": "grafana-example-app",
+  "name": "WebtestDashboard",
+  "id": "grafana-webtestDashboard-app",
 
   "pages": [
     { "name": "Live stream", "component": "StreamPageCtrl", "role": "Editor"},
@@ -25,17 +25,17 @@
       "large": "img/large_logo.png"
     },
     "links": [
-      {"name": "Project site", "url": "https://github.com/grafana/example-app"},
-      {"name": "License & Terms", "url": "https://github.com/grafana/example-app/blob/master/LICENSE"}
+      {"name": "Project site", "url": "https://github.com/grafana/webtestDashboard-app"},
+      {"name": "License & Terms", "url": "https://github.com/grafana/WebtestDashboard-app/blob/master/LICENSE"}
     ],
     "version": "1.0.2",
     "updated": "2015-06-06"
   },
 
   "includes": [
-    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/example_app_dashboard.json"},
-    {"type": "panel", "name": "Example App Panel"},
-    {"type": "datasource", "name": "Example App Datasource"}
+    {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/webtestDashboard_app_dashboard.json"},
+    {"type": "panel", "name": "WebtestDashboard App Panel"},
+    {"type": "datasource", "name": "WebtestDashboard App Datasource"}
   ],
 
   "dependencies": {

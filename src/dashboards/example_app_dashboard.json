@@ -1,9 +1,9 @@
 {
   "id": null,
-  "title": "Example App Dashboard",
-  "originalTitle": "Example App Dashboard",
+  "title": "WebtestDashboard App Dashboard",
+  "originalTitle": "WebtestDashboard App Dashboard",
   "tags": [
-    "example-app", "imported"
+    "webtestDashboard-app", "imported"
   ],
   "style": "dark",
   "timezone": "browser",

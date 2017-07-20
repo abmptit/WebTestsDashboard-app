@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['app/plugins/sdk', '../css/example-app.css!'], function (_export, _context) {
+System.register(['app/plugins/sdk', '../css/webtestDashboard-app.css!'], function (_export, _context) {
   "use strict";
 
   var PanelCtrl, ExampleAppPanelCtrl;
@@ -52,7 +52,7 @@ System.register(['app/plugins/sdk', '../css/example-app.css!'], function (_expor
         return ExampleAppPanelCtrl;
       }(PanelCtrl));
 
-      ExampleAppPanelCtrl.template = '<h2 class="example-app-heading">Example app!</h2>';
+      ExampleAppPanelCtrl.template = '<h2 class="webtestDashboard-app-heading">Example app!</h2>';
 
       _export('PanelCtrl', ExampleAppPanelCtrl);
     }
