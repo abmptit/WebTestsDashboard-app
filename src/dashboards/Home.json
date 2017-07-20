@@ -1,0 +1,873 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ES_REPORT",
+      "label": "ES_Report",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "elasticsearch",
+      "pluginName": "Elasticsearch"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "version": "3.0.0"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.1.1"
+    },
+    {
+      "type": "panel",
+      "id": "jdbranham-diagram-panel",
+      "name": "Diagram",
+      "version": "1.4.0"
+    },
+    {
+      "type": "panel",
+      "id": "savantly-heatmap-panel",
+      "name": "Heatmap",
+      "version": "0.1.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "ts-datatable-panel",
+      "name": "Datatable Panel",
+      "version": "0.0.2"
+    }
+  ],
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": null,
+  "links": [
+    {
+      "icon": "doc",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Home",
+      "type": "link",
+      "url": "/"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "General Informations",
+      "type": "link",
+      "url": "dashboard/db/general-informations"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Coverage",
+      "type": "link",
+      "url": "dashboard/db/coverage"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Stability",
+      "type": "link",
+      "url": "dashboard/db/stability"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Performances",
+      "type": "link",
+      "url": "dashboard/db/performances"
+    }
+  ],
+  "rows": [
+    {
+      "collapse": false,
+      "height": "25px",
+      "panels": [
+        {
+          "content": "<div class=\"text-center dashboard-header\">\n  <span>Home</span>\n</div>",
+          "editable": true,
+          "id": 1,
+          "links": [],
+          "mode": "html",
+          "span": 12,
+          "style": {},
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Home Dashboard",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 447,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "datasource": "${DS_ES_REPORT}",
+          "decimals": 0,
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": true,
+            "thresholdLabels": true,
+            "thresholdMarkers": false
+          },
+          "id": 5,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(107, 111, 115, 0.18)",
+            "full": true,
+            "lineColor": "rgb(220, 110, 36)",
+            "show": false
+          },
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "cardinality"
+                }
+              ],
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "50,70,100",
+          "title": "Total Web Tests Execution in this scope",
+          "transparent": true,
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "total"
+        },
+        {
+          "columns": [
+            {
+              "text": "Build Date",
+              "value": "Environment.BuildDate"
+            },
+            {
+              "text": "Build Url",
+              "value": "Environment.BuildUrl.keyword"
+            }
+          ],
+          "compactRowsEnabled": false,
+          "datatablePagingType": "simple_numbers",
+          "datatableTheme": "basic_theme",
+          "fontSize": "100%",
+          "height": "500",
+          "hideTimeOverride": false,
+          "hoverEnabled": true,
+          "id": 7,
+          "infoEnabled": false,
+          "lengthChangeEnabled": false,
+          "links": [],
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 500,
+          "rowNumbersEnabled": false,
+          "rowsPerPage": 5,
+          "scroll": true,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "showCellBorders": false,
+          "showHeader": true,
+          "showRowBorders": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 5,
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Build Date",
+              "type": "date"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "Build Url",
+              "thresholds": [],
+              "type": "url",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildUrl.keyword",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "select field",
+                  "id": "1",
+                  "type": "count"
+                }
+              ],
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "themeOptions": {
+            "dark": "./css/datatable-dark.css",
+            "light": "./css/datatable-light.css"
+          },
+          "themes": [
+            {
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Last WebTests Execution",
+          "transform": "json",
+          "transparent": true,
+          "type": "ts-datatable-panel"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "datasource": "${DS_ES_REPORT}",
+          "format": "none",
+          "gauge": {
+            "maxValue": 30000,
+            "minValue": 0,
+            "show": true,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 6,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 3,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.id.keyword",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "cardinality"
+                }
+              ],
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "5000,20000,30000",
+          "title": "Total Tests in this scope",
+          "transparent": true,
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "total"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 533,
+      "panels": [
+        {
+          "colors": [],
+          "content": "graph BT\n\nJ1[WebTests Job Execution] -- json Tests Report --> ES\nJ2[WebTests Job Execution] -- json Tests Report --> ES\nJ3[WebTests Job Execution] -- json Tests Report --> ES\nJ4[WebTests Job Execution] -- json Tests Report --> ES\nES((fa:fa-database ElasticSearch ))--> G[  fa:fa-bar-chart  GRAFANA DASHBOARD ]\n\n\nstyle ES fill:#DEC509, ,stroke-width:1px, text-align:center, vertical-align:center;\nstyle G fill:#F5A236, height: 100;",
+          "datasource": "-- Grafana --",
+          "description": "Dashboard Data origin",
+          "format": "none",
+          "graphId": "diagram_4",
+          "id": 4,
+          "init": {
+            "arrowMarkerAbsolute": true,
+            "cloneCssStyles": false,
+            "flowchart": {
+              "htmlLabels": true,
+              "useMaxWidth": true
+            },
+            "gantt": {
+              "barGap": 4,
+              "barHeight": 20,
+              "fontFamily": "\"Open-Sans\", \"sans-serif\"",
+              "fontSize": 11,
+              "gridLineStartPadding": 35,
+              "leftPadding": 75,
+              "numberSectionStyles": 3,
+              "titleTopMargin": 25,
+              "topPadding": 50
+            },
+            "logLevel": 3,
+            "sequenceDiagram": {
+              "actorMargin": 50,
+              "bottomMarginAdj": 1,
+              "boxMargin": 10,
+              "boxTextMargin": 5,
+              "diagramMarginX": 50,
+              "diagramMarginY": 10,
+              "height": 65,
+              "messageMargin": 35,
+              "mirrorActors": true,
+              "noteMargin": 10,
+              "useMaxWidth": true,
+              "width": 150
+            },
+            "startOnLoad": false
+          },
+          "legend": {
+            "avg": true,
+            "current": true,
+            "gradient": {
+              "enabled": true,
+              "show": true
+            },
+            "max": true,
+            "min": true,
+            "show": false,
+            "total": true
+          },
+          "links": [],
+          "mappingType": 1,
+          "maxDataPoints": 100,
+          "maxWidth": false,
+          "nullPointMode": "connected",
+          "seriesOverrides": [],
+          "span": 4,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto"
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "id": "1",
+                  "type": "count"
+                }
+              ],
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "0",
+          "title": "ELK (Dashboard Datas)",
+          "transparent": true,
+          "type": "jdbranham-diagram-panel",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "min",
+          "valueOptions": [
+            "avg",
+            "min",
+            "max",
+            "total",
+            "current"
+          ]
+        },
+        {
+          "chartId": "chart_8",
+          "colors": [
+            "rgba(50, 172, 45, 1)",
+            "rgb(48, 163, 19)",
+            "rgb(53, 102, 29)"
+          ],
+          "datasource": "${DS_ES_REPORT}",
+          "format": "none",
+          "height": "",
+          "id": 8,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": true
+          },
+          "links": [],
+          "mappingType": 1,
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "seriesOverrides": [],
+          "span": 3,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Tests.Scenarios.BrowserType.BrowserType",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "cardinality"
+                }
+              ],
+              "query": "",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "0,100",
+          "title": "Browsers",
+          "transparent": true,
+          "treeMap": {
+            "aggregationFunction": "sum",
+            "colorByFunction": "total",
+            "debug": false,
+            "depth": 0,
+            "enableGrouping": true,
+            "enableTimeBlocks": false,
+            "groups": [
+              {
+                "key": "server",
+                "value": "/^.*./g"
+              }
+            ],
+            "ids": [
+              "alias"
+            ],
+            "mode": "squarify",
+            "nodeSizeProperty": "value",
+            "showLegend": false,
+            "sizeByFunction": "max"
+          },
+          "type": "savantly-heatmap-panel",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ]
+        },
+        {
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "content": "graph LR\nNU[N-Unit Runner]  --Execute Tests List on--> SG\nSG(Selenium Grid) --> SH\nSH --dispatch on available--> SN1\nSH --dispatch on available--> SN2\nSN1 --> CB1\nSN1 --> CB2\nSN1 --> CB3\nSN2 --> CB4\nSN2 --> CB5\nSN2 --> CB6\n\nSG(Selenium Grid)\nSH(( fa:fa-tasks  Selenium Hub))\n\nSN1(Selenium Node)\nSN2(Selenium Node)\n\nCB1( fa:fa-desktop Browser)\nCB2( fa:fa-desktop Browser)\nCB3(fa:fa-desktop Browser)\nCB4(fa:fa-desktop Browser)\nCB5(fa:fa-desktop Browser)\nCB6(fa:fa-desktop Browser)\n",
+          "description": "Describe the testing environment",
+          "format": "none",
+          "graphId": "diagram_2",
+          "height": "500",
+          "id": 2,
+          "init": {
+            "arrowMarkerAbsolute": true,
+            "cloneCssStyles": false,
+            "flowchart": {
+              "htmlLabels": true,
+              "useMaxWidth": true
+            },
+            "gantt": {
+              "barGap": 4,
+              "barHeight": 20,
+              "fontFamily": "\"Open-Sans\", \"sans-serif\"",
+              "fontSize": 11,
+              "gridLineStartPadding": 35,
+              "leftPadding": 75,
+              "numberSectionStyles": 3,
+              "titleTopMargin": 25,
+              "topPadding": 50
+            },
+            "logLevel": 3,
+            "sequenceDiagram": {
+              "actorMargin": 50,
+              "bottomMarginAdj": 1,
+              "boxMargin": 10,
+              "boxTextMargin": 5,
+              "diagramMarginX": 50,
+              "diagramMarginY": 10,
+              "height": 65,
+              "messageMargin": 35,
+              "mirrorActors": true,
+              "noteMargin": 10,
+              "useMaxWidth": true,
+              "width": 150
+            },
+            "startOnLoad": false
+          },
+          "legend": {
+            "avg": true,
+            "current": true,
+            "gradient": {
+              "enabled": true,
+              "show": true
+            },
+            "max": true,
+            "min": true,
+            "show": false,
+            "total": true
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "Selenium Grid 3",
+              "type": "absolute",
+              "url": "http://selenium3.rd.talentsoft.com:4444/grid/console"
+            },
+            {
+              "targetBlank": true,
+              "title": "Selenium Grid 4",
+              "type": "absolute",
+              "url": "http://selenium4.rd.talentsoft.com:4444/grid/console"
+            }
+          ],
+          "mappingType": 1,
+          "maxDataPoints": 100,
+          "maxWidth": false,
+          "nullPointMode": "connected",
+          "seriesOverrides": [],
+          "span": 5,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": true,
+              "metrics": [
+                {
+                  "field": "select field",
+                  "id": "1",
+                  "type": "count"
+                }
+              ],
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "0,10",
+          "title": "Testing Environment Architecture (Parallel Execution)",
+          "transparent": true,
+          "type": "jdbranham-diagram-panel",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg",
+          "valueOptions": [
+            "avg",
+            "min",
+            "max",
+            "total",
+            "current"
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "enable": false,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ],
+    "type": "timepicker"
+  },
+  "timezone": "browser",
+  "title": "Home",
+  "version": 33
+}
