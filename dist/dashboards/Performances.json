@@ -1,0 +1,1088 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": 23,
+  "links": [
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Home",
+      "tooltip": "",
+      "type": "link",
+      "url": "."
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "General Informations",
+      "type": "link",
+      "url": "dashboard/db/general-informations"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Coverage",
+      "type": "link",
+      "url": "dashboard/db/coverage"
+    },
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Stability",
+      "type": "link",
+      "url": "dashboard/db/stability"
+    },
+    {
+      "icon": "doc",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Performances",
+      "type": "link",
+      "url": "dashboard/db/performances"
+    }
+  ],
+  "refresh": false,
+  "rows": [
+    {
+      "collapse": false,
+      "height": 78,
+      "panels": [
+        {
+          "content": "<div class=\"text-center dashboard-header\">\n  <span>Performances</span>\n</div>\n",
+          "id": 1,
+          "links": [],
+          "mode": "html",
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 472,
+      "panels": [
+        {
+          "chartId": "chart_9",
+          "colors": [
+            "rgba(50, 172, 45, 1)",
+            "rgba(241, 255, 0, 1)",
+            "rgba(245, 54, 54, 1)"
+          ],
+          "format": "none",
+          "id": 9,
+          "legend": {
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": false,
+            "total": true
+          },
+          "links": [],
+          "mappingType": 1,
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "seriesOverrides": [],
+          "span": 12,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "TestClassName",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Measure.ElapsedTotalTimeInMs",
+                  "id": "1",
+                  "inlineScript": "_value/60000",
+                  "meta": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/60000"
+                    }
+                  },
+                  "type": "avg"
+                }
+              ],
+              "query": "ProjectName:$ProjectName AND Environment.GitUrl:$GitUrl AND Environment.GitBranch:$GitBranch AND Environment.BuildTag:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "0,30",
+          "title": "Test Class Runner Execution Time (minutes)",
+          "transparent": true,
+          "treeMap": {
+            "colorByFunction": "avg",
+            "debug": false,
+            "depth": 0,
+            "enableGrouping": true,
+            "enableTimeBlocks": false,
+            "groups": [
+              {
+                "key": "server",
+                "value": "/^.*./g"
+              }
+            ],
+            "ids": [
+              "alias"
+            ],
+            "mode": "squarify",
+            "nodeSizeProperty": "value",
+            "sizeByFunction": "avg"
+          },
+          "type": "savantly-heatmap-panel",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 473,
+      "panels": [
+        {
+          "chartId": "chart_4",
+          "colors": [
+            "rgba(50, 172, 45, 1)",
+            "rgba(241, 255, 0, 1)",
+            "rgba(245, 54, 54, 1)"
+          ],
+          "description": "Optimize the longer time test execution on your solution.",
+          "format": "none",
+          "id": 4,
+          "legend": {
+            "avg": true,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false
+          },
+          "links": [],
+          "mappingType": 1,
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "seriesOverrides": [],
+          "span": 12,
+          "targets": [
+            {
+              "alias": "",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "5"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "Tests.Name.keyword",
+                  "id": "5",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.Measure.ElapsedTotalTimeInMs",
+                  "id": "1",
+                  "inlineScript": "_value / 1000",
+                  "meta": {
+                    "avg": false,
+                    "max": true,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false
+                  },
+                  "settings": {
+                    "script": {
+                      "inline": "_value / 1000"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:$ProjectName AND Environment.GitUrl:$GitUrl AND Environment.GitBranch:$GitBranch AND Environment.BuildTag:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": "0,1200",
+          "title": "Test Time Execution (second)",
+          "transparent": true,
+          "treeMap": {
+            "aggregationFunction": "max",
+            "colorByFunction": "avg",
+            "debug": false,
+            "depth": "100",
+            "enableGrouping": true,
+            "enableTimeBlocks": false,
+            "groups": [
+              {
+                "key": "server",
+                "value": "/^.*./g"
+              }
+            ],
+            "ids": [
+              "alias"
+            ],
+            "mode": "squarify",
+            "nodeSizeProperty": "value",
+            "showLegend": true,
+            "sizeByFunction": "avg"
+          },
+          "type": "savantly-heatmap-panel",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "columns": [
+            {
+              "text": "Build Url",
+              "value": "Environment.BuildUrl.keyword"
+            },
+            {
+              "text": "Tests Start Time",
+              "value": "Min"
+            },
+            {
+              "text": "Tests End Time",
+              "value": "Max"
+            }
+          ],
+          "compactRowsEnabled": false,
+          "datatablePagingType": "simple_numbers",
+          "datatableTheme": "basic_theme",
+          "description": "Display per Build :\n1. First Test Start Time\n2. Last Test End Time",
+          "fontSize": "100%",
+          "hoverEnabled": true,
+          "id": 8,
+          "infoEnabled": false,
+          "lengthChangeEnabled": false,
+          "links": [],
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 250,
+          "rowNumbersEnabled": false,
+          "rowsPerPage": 20,
+          "scroll": false,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "showCellBorders": false,
+          "showHeader": true,
+          "showRowBorders": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 12,
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Tests Start Time",
+              "type": "date"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "Tests End Time",
+              "thresholds": [],
+              "type": "date",
+              "unit": "short"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "Build Url",
+              "thresholds": [],
+              "type": "url",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildUrl.keyword",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.Measure.StartTime",
+                  "id": "4",
+                  "meta": {
+                    "max": false,
+                    "min": true,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false
+                  },
+                  "settings": {},
+                  "type": "extended_stats"
+                },
+                {
+                  "field": "Tests.Measure.EndTime",
+                  "id": "5",
+                  "meta": {
+                    "max": true,
+                    "min": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false
+                  },
+                  "settings": {},
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:$ProjectName AND Environment.GitUrl:$GitUrl AND Environment.GitBranch:$GitBranch AND Environment.BuildTag:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "themeOptions": {
+            "dark": "./css/datatable-dark.css",
+            "light": "./css/datatable-light.css"
+          },
+          "themes": [
+            {
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Execution Time",
+          "transform": "json",
+          "type": "ts-datatable-panel"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 453,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "datasource": null,
+          "decimals": 0,
+          "description": "Display for each build :\n1 - The Longer Test\n2 - The Faster Test\n3- Average Time Execution for each build",
+          "fill": 1,
+          "hideTimeOverride": false,
+          "id": 3,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "total",
+            "sortDesc": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 2,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "{{Environment.BuildTag.keyword}} Execution Time  (seconds)",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "Environment.BuildDate",
+                  "id": "3",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.Measure.ElapsedTotalTimeInMs",
+                  "id": "1",
+                  "inlineScript": "(_value / 1000)",
+                  "meta": {
+                    "avg": true,
+                    "count": false,
+                    "max": true,
+                    "min": true,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": false
+                  },
+                  "settings": {
+                    "missing": null,
+                    "script": {
+                      "inline": "(_value / 1000)"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:$ProjectName AND Environment.GitUrl:$GitUrl AND Environment.GitBranch:$GitBranch AND Environment.BuildTag:$BuildTag",
+              "refId": "A",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Tests Execution Time per Build seconds (min, avg, max)",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": [
+              "total"
+            ]
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 419,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "datasource": null,
+          "decimals": 0,
+          "fill": 1,
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "5",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "1",
+                  "meta": {
+                    "count": false,
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {},
+                  "type": "extended_stats"
+                },
+                {
+                  "field": "Tests.IsPassed",
+                  "hide": true,
+                  "id": "4",
+                  "inlineScript": "(_value-1)*(-1)",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "script": {
+                      "inline": "(_value-1)*(-1)"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:$ProjectName AND Environment.GitUrl:$GitUrl AND Environment.GitBranch:$GitBranch AND Environment.BuildTag:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Passed Tests per Build",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "series",
+            "name": null,
+            "show": false,
+            "values": [
+              "max"
+            ]
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Nb Tests",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "jenkins-Career-RD_Sprint-WebTests-614": "#890F02",
+            "jenkins-Career-ondemand-WebTests-441": "#E24D42"
+          },
+          "bars": true,
+          "datasource": null,
+          "decimals": 0,
+          "fill": 1,
+          "id": 7,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": true,
+          "steppedLine": true,
+          "targets": [
+            {
+              "alias": "",
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Environment.BuildTag.keyword",
+                  "id": "5",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "Environment.BuildDate",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Tests.IsPassed",
+                  "id": "4",
+                  "inlineScript": "(_value-1)*(-1)",
+                  "meta": {
+                    "std_deviation_bounds_lower": false,
+                    "std_deviation_bounds_upper": false,
+                    "sum": true
+                  },
+                  "settings": {
+                    "script": {
+                      "inline": "(_value-1)*(-1)"
+                    }
+                  },
+                  "type": "extended_stats"
+                }
+              ],
+              "query": "ProjectName:$ProjectName AND Environment.GitUrl:$GitUrl AND Environment.GitBranch:$GitBranch AND Environment.BuildTag:$BuildTag",
+              "refId": "B",
+              "timeField": "Environment.BuildDate"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Failed Tests per Build",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "series",
+            "name": null,
+            "show": false,
+            "values": [
+              "max"
+            ]
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Nb Tests",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Project Name",
+        "multi": true,
+        "name": "ProjectName",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "Recruiting",
+            "value": "Recruiting"
+          },
+          {
+            "selected": false,
+            "text": "Career",
+            "value": "Career"
+          },
+          {
+            "selected": false,
+            "text": "HelloTalent",
+            "value": "HelloTalent"
+          }
+        ],
+        "query": "Recruiting,Career,HelloTalent",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "ES_Report",
+        "hide": 0,
+        "includeAll": true,
+        "label": "GitUrl",
+        "multi": true,
+        "name": "GitUrl",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"Environment.GitUrl.keyword\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "ES_Report",
+        "hide": 0,
+        "includeAll": true,
+        "label": "GitBranch",
+        "multi": true,
+        "name": "GitBranch",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"Environment.GitBranch.keyword\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "ES_Report",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Build",
+        "multi": true,
+        "name": "BuildTag",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"Environment.BuildTag.keyword\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "datasource": "ES_Report",
+        "filters": [],
+        "hide": 0,
+        "label": "Filter Data",
+        "name": "CustomFilter",
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Performances",
+  "version": 59
+}
