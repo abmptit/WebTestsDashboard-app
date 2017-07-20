@@ -14,12 +14,12 @@
   },
 
   "info": {
-    "description": "Example app for Grafana",
+    "description": "WebtestDashboard app for Grafana",
     "author": {
       "name": "Raintank",
       "url": "http://raintank.io"
     },
-    "keywords": ["example app"],
+    "keywords": ["WebtestDashboard app"],
     "logos": {
       "small": "img/small_logo.png",
       "large": "img/large_logo.png"
